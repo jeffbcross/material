@@ -58,7 +58,7 @@ Developers must add any theme's stylesheet that will be used in their applicatio
 <br/>**Step 2:**
 
 If no theme is specified, your application will be in the **default** Angular Material theme... no extra configuration is required.
-<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. <br/><br/>Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest, theme-specified, parent container node. If a theme is **NOT** specified for a component or any of its parent, the `default` theme will again be used.
+<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. <br/><br/>Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest, theme-specified, parent container node. If a theme is **NOT** specified for a component or any of its parents, the `default` theme will again be used.
 <br/><br/>
 ```html
 <!doctype html>
@@ -101,11 +101,11 @@ The Angular Material Online documentation also provides additional examples of t
 
 ## 2) <a name="ct"></a> Building Custom Themes
 
-Normally you will use the *standard* themes provided by AngularJS Material and the **md-theme** directive. Sometimes, however, you need your own brand colors, etc, in which case you should build and compile your own theme.
+Normally you will use the *standard* themes provided by Angular Material and the **md-theme** directive. Sometimes, however, you need your own brand colors, etc, in which case you should build and compile your own theme.
 
 To build your own theme, you must write a `scss` file that overrides only the specific variables that you want to customize. These will be used to override settings in the imported `default-theme` settings and generate your custom theme file.
 
-For example, let's prepare a custome them file `themes/my-theme.scss`:
+For example, let's prepare a custom theme file `themes/my-theme.scss`:
 
 ```scss
 $theme-name: 'my-custom-theme';
@@ -120,7 +120,7 @@ Then run the shell command
 gulp build-theme -t my-theme
 ```
 
-to generate the theme file `dist/themes/my-theme.css`; which must be manually added to their project(s). 
+to generate the theme file `dist/themes/my-theme.css`; which must be manually added to your project(s). 
 
 The application can now be easily themed using the `md-theme` directive:
 
