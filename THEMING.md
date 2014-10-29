@@ -26,9 +26,13 @@ This document is intended to provide clarity on three (3) important [Angular Mat
 
 Only two (2) simple steps are required to use Themes within your own custom application:
 
-1. **Load** the `default-theme.css` and one (1) or more custom theme CSS files in your main HTML page.
+**Step 1**:
+
+Load the `default-theme.css` and one (1) or more custom theme CSS files in your main HTML page.
 <br/><br/>Compiled themes can be found in both the `/dist/themes` directory and the [bower-material themes](https://github.com/angular/bower-material/themes) folder. 
-<br/><br/>
+> NOTE: The directory `/dist/themes` is updated after running `gulp build`.
+
+
 Developers must add any theme's stylesheet that will be used in their application. For example, if the application also uses theme's `green` and `indigo`, you must install all those `*.css` files:<br/><br/>
 ```html
 <!doctype html>
@@ -50,10 +54,11 @@ Developers must add any theme's stylesheet that will be used in their applicatio
     <body>...</body>
 </html>
 ```
-> NOTE: The directory `/dist/themes` is updated after running `gulp build`.
 
-2. If no theme is specified, your application will be in the **default** Angular Material theme... no extra configuration is required.
-<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. <br/><br/>Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest, theme-specified, parent container node. If a theme is **NOT** specified for a component or its parent, the `default` theme will again be used.
+<br/>**Step 2:**
+
+If no theme is specified, your application will be in the **default** Angular Material theme... no extra configuration is required.
+<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. <br/><br/>Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest, theme-specified, parent container node. If a theme is **NOT** specified for a component or any of its parent, the `default` theme will again be used.
 <br/><br/>
 ```html
 <!doctype html>
@@ -109,23 +114,19 @@ $background-color-base: #333;
 $checkbox-color-palette: $color-pink;
 ```
 
-Then run the shell command 
-
-
-### Installing your own Theme
+Then run the shell command
 
 ```sh
 gulp build-theme -t my-theme
 ```
 
-to generate the theme file `dist/themes/my-theme.css`. 
+to generate the theme file `dist/themes/my-theme.css`; which must be manually added to their project(s). 
 
-Developers must manually add these custom generated `css` files to their project(s). The application can now be easily themed using the `md-them` directive:
+The application can now be easily themed using the `md-theme` directive:
 
 ```html
-<body ng-app="my-app" md-theme="custom">
-  <material-content >
-  </material-content>
+<body ng-app="myApp" md-theme="custom">
+
 </body>
 ```
 
