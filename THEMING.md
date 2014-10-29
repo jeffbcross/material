@@ -15,9 +15,9 @@ Themes' support is an integral feature within each Angular Material component. A
 - - -
 
 
-This document is intended to provide clarity on three (3) important [Angular Material] Theme topics:
+This document is intended to provide clarity on three (3) important[Angular Material] Theme topics:
 
-1. [Using *Themes*](#ut)
+1. [Using Themes](#ut)
 2. [Building Custom Themes](#ct)
 3. [Exploring Themes](#tuth)
 
