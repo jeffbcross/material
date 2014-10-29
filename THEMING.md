@@ -125,7 +125,7 @@ to generate the theme file `dist/themes/my-theme.css`; which must be manually ad
 The application can now be easily themed using the `md-theme` directive:
 
 ```html
-<body ng-app="myApp" md-theme="custom">
+<body ng-app="myApp" md-theme="my-custom-theme">
 
 </body>
 ```
@@ -133,7 +133,7 @@ The application can now be easily themed using the `md-theme` directive:
 
 ## 3) <a name="tuth"></a>Exploring the Theme Implementation
 
-This section will provide a high-level, under-the-hood exploration of Themes; to determine how its features are supported in both the CSS and the JavaScript implementations.
+Themes are implemented through a combination of SCSS/CSS and JavaScript solutions. Below is a high-level, under-the-hood exploration of those solutions.
 
 #### CSS Features
 <br/>
@@ -147,6 +147,7 @@ body {
 }
 ```
 
+<br/>
 **Global Style Variables**
 
 Most Angular Material components' colors are derived from variables found in [variables.scss](https://github.com/angular/material/blob/master/src/core/style/variables.scss). By overriding these variables you can generate your own themes. Here are some guidelines regarding the variables found in `variables.scss`:
