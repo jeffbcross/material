@@ -27,7 +27,9 @@ This document is intended to provide clarity on three (3) important [Angular Mat
 Only two (2) simple steps are required to use Themes within your own custom application:
 
 1. **Load** the `default-theme.css` and one (1) or more custom theme CSS files in your main HTML page.
-<br/>Compiled themes can be found in the [bower-material themes](https://github.com/angular/bower-material/themese) folder. 
+<br/><br/>Compiled themes can be found in both the `/dist/themes` directory and the [bower-material themes](https://github.com/angular/bower-material/themese) folder. 
+<br/><br/>
+Developers must add any theme's stylesheet that will be used in their application. For example, if the application also uses theme's `green` and `indigo`, you must install all those `*.css` files:<br/><br/>
 ```html
 <!doctype html>
 <html lang="en">
@@ -48,9 +50,10 @@ Only two (2) simple steps are required to use Themes within your own custom appl
     <body>...</body>
 </html>
 ```
+> NOTE: The directory `/dist/themes` is updated after running `gulp build`.
 
 2. Your application will auto-use the **default** Angular Material theme... no extra configuration is required.
-<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. Any Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest parent container nodes. If a theme is **NOT** specified, the `default` theme will again be used.
+<br/><br/>To **override** an area of your application with a custom theme, simply use the `md-theme` directive on specific view areas; which may be a container element or a specific element within your **ng-app**. <br/><br/>Angular Material component will always use the theme specified by its own **md-theme** setting or use the setting from the closest, theme-specified, parent container node. If a theme is **NOT** specified, the `default` theme will again be used.
 <br/><br/>
 ```html
 <!doctype html>
@@ -73,8 +76,6 @@ Only two (2) simple steps are required to use Themes within your own custom appl
 ```
 
 <br/><br/>
-The Angular Material Online documents also use Theme-**overrides** for Buttons and [Progress Bars](http://localhost:8200/index.html#/demo/material.components.progressLinear).
-
 The HTML snippet below shows how specific components can override the inherited theme:
 ```html
   <h4>Themes</h4>
@@ -88,16 +89,18 @@ The HTML snippet below shows how specific components can override the inherited 
 
 ![screen shot 2014-10-29 at 7 02 58 am](https://cloud.githubusercontent.com/assets/210413/4825301/a45d735a-5f63-11e4-8597-60386f35fc68.png)
 
+The Angular Material Online documentation also provides additional examples of theme-**overrides**: see [Buttons](http://localhost:8200/index.html#/demo/material.components.button), [Progress Bars](http://localhost:8200/index.html#/demo/material.components.progressLinear), and others...
+
 
 
 
 ## 2) <a name="ct"></a> Building Custom Themes
 
-Most of the time, you should use the themes provided by angular-material and the `md-theme` directive for your theming needs. That being said, sometimes you need your own brand colors, etc, in which case you can build and compile your own theme.
+Most of the time, you should use the *standard* themes provided by AngularJS Material and the **md-theme** directive. Sometimes, however, you need your own brand colors, etc, in which case you should build and compile your own theme.
 
-To build your own theme, you must write a `scss` file that overrides the specific variables that you want to use, place that file in `themes/my-theme.scss` and then run the `gulp build-theme -t my-theme`. Ultimately this will be a separate gulp plugin.
+To build your own theme, you must write a `scss` file that overrides only the specific variables that you want to customize. 
 
-For example:
+For example, let's prepare a custome them file `themes/my-theme.scss`:
 
 ```scss
 $theme-name: 'my-custom-theme';
@@ -106,17 +109,22 @@ $background-color-base: #333;
 $checkbox-color-palette: $color-pink;
 ```
 
-Then, take the generated theme file in `dist/themes/my-theme.css`.
+Then run the shell command 
 
+```sh
+gulp build-theme -t my-theme
+```
 
-### Installing your own Theme
+to generate the theme file `dist/themes/my-theme.css`. 
 
-For now, themes can only be added by generating them yourself and then adding the generated `css` files to your project. This will be improved in later versions of angular-material.
+Developers must manually add these custom generated `css` files to their project(s). The application can now be easily themed using the `md-them` directive:
 
-Compiled themes can be found in the `dist/themes/` folder, after running `gulp build`.
-
-You must add any theme's stylesheet that you want to use in your app. ie. if your app uses theme's `green`, `red`, and `indigo`, you must install all of them.
-
+```html
+<body ng-app="my-app" md-theme="custom">
+  <material-content >
+  </material-content>
+</body>
+```
 
 
 ## 3) <a name="tuth"></a>Exploring Themes
