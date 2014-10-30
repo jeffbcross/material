@@ -105,27 +105,49 @@ Normally you will use the *standard* themes provided by Angular Material and the
 
 To build your own theme, you must write a `scss` file that overrides only the specific variables that you want to customize. These will be used to override settings in the imported `default-theme` settings and generate your custom theme file.
 
-For example, let's prepare a custom theme file `themes/my-theme.scss`:
+For example, let's prepare a custom theme file `themes/my-app-theme.scss`:
 
 ```scss
-$theme-name: 'my-custom-theme';
-$primary-color-palette: $color-indigo;
+// You can also define an entirely new palette of colors
+
+$color-myapp-palette: (			
+  '50': #fde0dc,
+  '100': #f9bdbb,
+  '200': #f69988,
+  '300': #f36c60,
+  '400': #e84e40,
+  '500': #e51c23,
+  '600': #dd191d,
+  '700': #d01716,
+  '800': #c41411,
+  '900': #b0120a,
+  'A100': #ff7997,
+  'A200': #ff5177,
+  'A400': #ff2d6f,
+  'A700': #e00032
+);
+
+$theme-name: 'my-app';				            // define new theme called `my-app`
+
+$primary-color-palette: $color-myapp-palette;	 // reset primary color to `myApp` palette above
 $background-color-base: #333;
-$checkbox-color-palette: $color-pink;
+
+$checkbox-color-palette: $color-pink;			 // override checkbox colors to `pink` theme
+$tabs-color-palette: $color-indigo;			   // override tabs colors to `indigot` theme
 ```
 
 Then run the shell command
 
 ```sh
-gulp build-theme -t my-theme
+gulp build-theme -t my-app
 ```
 
-to generate the theme file `dist/themes/my-theme.css`; which must be manually added to your project(s). 
+to generate the theme file `dist/themes/my-app-theme.css`
 
-The application can now be easily themed using the `md-theme` directive:
+Manually add this the my-app-theme.css to your project(s). Then your application can now be easily assign the custom theme(s) using the `md-theme` directive:
 
 ```html
-<body ng-app="myApp" md-theme="my-custom-theme">
+<body ng-app="myApp" md-theme="my-app">
 
 </body>
 ```
